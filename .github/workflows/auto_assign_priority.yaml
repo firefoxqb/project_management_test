@@ -12,10 +12,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-      - name: Debug GITHUB_EVENT_NAME
-        run: echo "Event: $GITHUB_EVENT_NAME"
-      - name: Debug Issue Title
-        run: echo "Issue Title: $issue_title"
       - name: Assign Priority Label
         run: |
           if [[ "$GITHUB_EVENT_NAME" == "issues" ]]; then
