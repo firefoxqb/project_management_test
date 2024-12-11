@@ -15,7 +15,7 @@ jobs:
       - name: Assign Priority Label
         run: |
           if [[ "$GITHUB_EVENT_NAME" == "issues" ]]; then
-            echo "Processing issue event..."
+            echo "Processing issue event...$issue_title"
             if [[ "$issue_title" == *"SP: 3"* ]]; then
               echo "High priority detected."
               gh issue edit ${{ github.event.issue.number }} --add-label "Priority: High"
