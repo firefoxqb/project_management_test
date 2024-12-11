@@ -1,4 +1,6 @@
 ## [Unreleased]
+- Fix/debug issue automation
+## [Unreleased]
 - feat: add auto assign priority to issue
 ## [Unreleased]
 - feat: update readme
