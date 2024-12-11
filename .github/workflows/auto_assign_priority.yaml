@@ -1,0 +1,25 @@
+name: Auto Assign Priority
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+
+jobs:
+  auto-priority:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Assign Priority Label
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == "issues" ]]; then
+            if [[ "$issue_title" == *"SP: 3"* ]]; then
+              gh issue edit ${{ github.event.issue.number }} --add-label "Priority: High"
+            elif [[ "$issue_title" == *"SP: 2"* ]]; then
+              gh issue edit ${{ github.event.issue.number }} --add-label "Priority: Medium"
+            elif [[ "$issue_title" == *"SP: 1"* ]]; then
+              gh issue edit ${{ github.event.issue.number }} --add-label "Priority: Low"
+            fi
+          fi
